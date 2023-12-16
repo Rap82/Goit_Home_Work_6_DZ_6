@@ -106,41 +106,17 @@
 #  return cats_info_list_all
 
 
-from pathlib import Path
-import re
-# def save_applicant_data ( source, output ) :
+# byte_string = b'Hello world!'
+# byte_string = 'some text'.encode()
+# print (byte_string[1])
 
-#     #student_list = 
+s = "Привіт!"
 
-#     with open ( output , "w" ) as fh :
-#         for record in source :
-#             for value in record.values() :
-#                 fh.write(str(value))
-#             fh.write("\n")
-                
-def save_applicant_data ( source, output ) :
-        
-       student_list = []
+utf8 = s.encode()
+print(utf8)  # b'\xd0\x9f\xd1\x80\xd0\xb8\xd0\xb2\xd0\xb5\xd1\x82!'
 
-       for dict in source :
-              
-            for key, value in dict.items() :
-                     student_list.append(value)
+utf16 = s.encode('utf-16')
+print(utf16)  # b'\xff\xfe\x1f\x04@\x048\x042\x045\x04B\x04!\x00'
 
-            student_list.append("\n")
-       text = ''.join(str(student_list))
-       print(text)
-      
-              
-        
-
-
-
-
-
-
-source =[{"name": "Kovalchuk Oleksiy","specialty": 301,"math": 175,"lang": 180,"eng": 155,},{"name": "Ivanchuk Boryslav","specialty": 101,"math": 135,"lang": 150,},{"name": "Karpenko Dmitro","specialty": 201,"math": 155,"lang": 175,"eng": 185,}]
-
-output = Path ( "Output_studen_list_Zavdania_8.txt" )
-
-save_applicant_data ( source, output )
+s_from_utf16 = utf16.decode('utf-16')
+print(s_from_utf16 == s)  # True
