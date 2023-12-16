@@ -74,33 +74,73 @@
 
 
 
-from pathlib import Path
-import re
+# from pathlib import Path
+# import re
 
-def get_cats_info(path):
+# def get_cats_info(path):
  
  
- cats_info_list_all = []
- Key_for_dict = ["id", "name", "age"]
- cat_info_dict_up = {}
+#  cats_info_list_all = []
+#  Key_for_dict = ["id", "name", "age"]
+#  cat_info_dict_up = {}
 
- with open (path , "r") as fh :
+#  with open (path , "r") as fh :
         
-      #print (path)
-      cats_info = fh.readlines()
-      #print (cats_info)
-      patern = "\n"   
-      replace = ""
-      for cat_inf in cats_info :
-         cat_info =  re.sub (patern, replace , cat_inf ) 
-         #print(cat_info)
-         cat_info_list = re.split (",", cat_info)
-         #print(cat_info_list)
-         cat_info_dict_up = dict(zip(Key_for_dict,cat_info_list))      
+#       #print (path)
+#       cats_info = fh.readlines()
+#       #print (cats_info)
+#       patern = "\n"   
+#       replace = ""
+#       for cat_inf in cats_info :
+#          cat_info =  re.sub (patern, replace , cat_inf ) 
+#          #print(cat_info)
+#          cat_info_list = re.split (",", cat_info)
+#          #print(cat_info_list)
+#          cat_info_dict_up = dict(zip(Key_for_dict,cat_info_list))      
          
             
-         print (cat_info_dict_up)
+#          print (cat_info_dict_up)
          
-         cats_info_list_all.append(cat_info_dict_up)
-      #print(f"cats_info_list_all = {cats_info_list_all}\n")
- return cats_info_list_all
+#          cats_info_list_all.append(cat_info_dict_up)
+#       #print(f"cats_info_list_all = {cats_info_list_all}\n")
+#  return cats_info_list_all
+
+
+from pathlib import Path
+import re
+# def save_applicant_data ( source, output ) :
+
+#     #student_list = 
+
+#     with open ( output , "w" ) as fh :
+#         for record in source :
+#             for value in record.values() :
+#                 fh.write(str(value))
+#             fh.write("\n")
+                
+def save_applicant_data ( source, output ) :
+        
+       student_list = []
+
+       for dict in source :
+              
+            for key, value in dict.items() :
+                     student_list.append(value)
+
+            student_list.append("\n")
+       text = ''.join(str(student_list))
+       print(text)
+      
+              
+        
+
+
+
+
+
+
+source =[{"name": "Kovalchuk Oleksiy","specialty": 301,"math": 175,"lang": 180,"eng": 155,},{"name": "Ivanchuk Boryslav","specialty": 101,"math": 135,"lang": 150,},{"name": "Karpenko Dmitro","specialty": 201,"math": 155,"lang": 175,"eng": 185,}]
+
+output = Path ( "Output_studen_list_Zavdania_8.txt" )
+
+save_applicant_data ( source, output )

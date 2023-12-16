@@ -731,50 +731,143 @@
 
 # ++++++++++++++++++++ Код / Code ++++++++++++++++++++++++++++++++++++
 
-from pathlib import Path
-import re
+# from pathlib import Path
+# import re
 
-def sanitize_file ( source, output ) :  # Функцію *sanitize_file(source, output), що переписує у текстовий файл output вміст текстового файлу source, очищений від цифр.
+# def sanitize_file ( source, output ) :  # Функцію *sanitize_file(source, output), що переписує у текстовий файл output вміст текстового файлу source, очищений від цифр.
 
-    with open ( source , "r" ) as fh :          # Відкриваємо файл *source(мітить шлях до вказаного файлу ) Для читання за допомогою менеджера контексту with ... as
+#     with open ( source , "r" ) as fh :          # Відкриваємо файл *source(мітить шлях до вказаного файлу ) Для читання за допомогою менеджера контексту with ... as
 
 
-        file_read_source = fh.readlines ()    # считуємо вміст файлу переданий порядково в *fh за допомогою методу *імя_файл_дескриптора.readlines () 
-                                              #  *file_read_source - присвоється список де елементами будуть рядки з файлу.
-        # print ( file_read_source )
-        patern = "[0-9]"                      # Патерн для пошуку відповідності в рядку з файла і подальшої його заміни.
-        replace = ""                          # *replace -містить пустий символ , використовуєця для заміни патерна
+#         file_read_source = fh.readlines ()    # считуємо вміст файлу переданий порядково в *fh за допомогою методу *імя_файл_дескриптора.readlines () 
+#                                               #  *file_read_source - присвоється список де елементами будуть рядки з файлу.
+#         # print ( file_read_source )
+#         patern = "[0-9]"                      # Патерн для пошуку відповідності в рядку з файла і подальшої його заміни.
+#         replace = ""                          # *replace -містить пустий символ , використовуєця для заміни патерна
         
-        with open ( output , "w" ) as fhs :       # Відкриваємо файл *output(мітить шлях до вказаного файлу ) Для pfgbce за допомогою менеджера контексту with ... as
+#         with open ( output , "w" ) as fhs :       # Відкриваємо файл *output(мітить шлях до вказаного файлу ) Для pfgbce за допомогою менеджера контексту with ... as
             
-            for line_file in file_read_source : # Цикл в якому будемо проходитись по елемаентам списку *file_read_source який міститься рядки з файлу source
-                                                # і за допомогою фінкції re.sub() очищати рядок від цифр. Методом заміни всіх цифр пустим символом.
-                                                # Очищений рядок записуємо відразу в наш файл *output 
+#             for line_file in file_read_source : # Цикл в якому будемо проходитись по елемаентам списку *file_read_source який міститься рядки з файлу source
+#                                                 # і за допомогою фінкції re.sub() очищати рядок від цифр. Методом заміни всіх цифр пустим символом.
+#                                                 # Очищений рядок записуємо відразу в наш файл *output 
                   
-                fhs.write ( re.sub ( patern, replace , line_file ) ) # Функція re.sub ( patern, replace ,line_file ) Отримує поточний рядок *line_file 
-                                                                    # Перевіряє чи є в ньому значення *patern , якщо є то міняє його на значення * replace і
-                                                                    # повертає змінений рядок .
-                                                                    # Метод fhs.write - Поверне в Файловий дискриптор *fhs рядок записаний по символьно який поверне функція re.sub()
-                                                                    # В кінці циклу в  *fhs буде містити весь файл який потрібно буде записати в *output
-                                                                    # Після закриття файлу менеджером контексту with ... as вміст *fhs буде записано і збережено в файл *output  
+#                 fhs.write ( re.sub ( patern, replace , line_file ) ) # Функція re.sub ( patern, replace ,line_file ) Отримує поточний рядок *line_file 
+#                                                                     # Перевіряє чи є в ньому значення *patern , якщо є то міняє його на значення * replace і
+#                                                                     # повертає змінений рядок .
+#                                                                     # Метод fhs.write - Поверне в Файловий дискриптор *fhs рядок записаний по символьно який поверне функція re.sub()
+#                                                                     # В кінці циклу в  *fhs буде містити весь файл який потрібно буде записати в *output
+#                                                                     # Після закриття файлу менеджером контексту with ... as вміст *fhs буде записано і збережено в файл *output  
                 
 
-source = Path ("Source_Zavdania_7.txt")  # тестовий файл містить :
+# source = Path ("Source_Zavdania_7.txt")  # тестовий файл містить :
 
-                                        # 60b90c1c13067a15887e1ae1,Herbed Baked Salmon,4 lemons,1 large red onion,2 tablespoons chopped fresh basil
-                                        # 60b90c2413067a15887e1ae2,Lemon Pancakes,2 tablespoons baking powder,1 cup vanilla-flavored almond milk,1 lemon
-                                        # 60b90c2e13067a15887e1ae3,Chicken and Cold Noodles,6 ounces dry Chinese noodles,1 tablespoon sesame oil,3 tablespoons soy sauce
-                                        # 60b90c3b13067a15887e1ae4,Watermelon Cucumber Salad,1 large seedless watermelon,12 leaves fresh mint,1 cup crumbled feta cheese
-                                        # 60b90c4613067a15887e1ae5,State Fair Lemonade,6 lemons,1 cups white sugar,5 cups cold water
+#                                         # 60b90c1c13067a15887e1ae1,Herbed Baked Salmon,4 lemons,1 large red onion,2 tablespoons chopped fresh basil
+#                                         # 60b90c2413067a15887e1ae2,Lemon Pancakes,2 tablespoons baking powder,1 cup vanilla-flavored almond milk,1 lemon
+#                                         # 60b90c2e13067a15887e1ae3,Chicken and Cold Noodles,6 ounces dry Chinese noodles,1 tablespoon sesame oil,3 tablespoons soy sauce
+#                                         # 60b90c3b13067a15887e1ae4,Watermelon Cucumber Salad,1 large seedless watermelon,12 leaves fresh mint,1 cup crumbled feta cheese
+#                                         # 60b90c4613067a15887e1ae5,State Fair Lemonade,6 lemons,1 cups white sugar,5 cups cold water
 
-output = Path ("Output_Zavdania_7.txt") # тестовий файл буде мітити після очищення і запису  :
+# output = Path ("Output_Zavdania_7.txt") # тестовий файл буде мітити після очищення і запису  :
 
-                                        # bccaeae,Herbed Baked Salmon, lemons, large red onion, tablespoons chopped fresh basil
-                                        # bcaeae,Lemon Pancakes, tablespoons baking powder, cup vanilla-flavored almond milk, lemon
-                                        # bceaeae,Chicken and Cold Noodles, ounces dry Chinese noodles, tablespoon sesame oil, tablespoons soy sauce
-                                        # bcbaeae,Watermelon Cucumber Salad, large seedless watermelon, leaves fresh mint, cup crumbled feta cheese
-                                        # bcaeae,State Fair Lemonade, lemons, cups white sugar, cups cold water
+#                                         # bccaeae,Herbed Baked Salmon, lemons, large red onion, tablespoons chopped fresh basil
+#                                         # bcaeae,Lemon Pancakes, tablespoons baking powder, cup vanilla-flavored almond milk, lemon
+#                                         # bceaeae,Chicken and Cold Noodles, ounces dry Chinese noodles, tablespoon sesame oil, tablespoons soy sauce
+#                                         # bcbaeae,Watermelon Cucumber Salad, large seedless watermelon, leaves fresh mint, cup crumbled feta cheese
+#                                         # bcaeae,State Fair Lemonade, lemons, cups white sugar, cups cold water
 
 
-sanitize_file ( source, output )     # Виклик функції *sanitize_file ( source, output )
+# sanitize_file ( source, output )     # Виклик функції *sanitize_file ( source, output )
 
+
+# ======================================= Завдання 8 /Task 8 ========================
+
+# ++++++++++++++++  СТРУКТУРУЄМО ЗАПИС У ФАЙЛ   +++++++++++++++++++
+
+
+# +++++++++++++++++++++++++++++++++++++++   Умова    +++++++++++++++++++++++++++++++++
+
+# Задано відомість абітурієнтів, які склали вступні іспити до університету. 
+# Структура даних щодо абітурієнтів подана у вигляді наступного списку:
+
+# [
+#     {
+#         "name": "Kovalchuk Oleksiy",
+#         "specialty": 301,
+#         "math": 175,
+#         "lang": 180,
+#         "eng": 155,
+#     },
+#     {
+#         "name": "Ivanchuk Boryslav",
+#         "specialty": 101,
+#         "math": 135,
+#         "lang": 150,
+#         "eng": 165,
+#     },
+#     {
+#         "name": "Karpenko Dmitro",
+#         "specialty": 201,
+#         "math": 155,
+#         "lang": 175,
+#         "eng": 185,
+#     },
+# ]
+# У кожному словнику цього списку записано прізвище абітурієнта — ключ name, код спеціальності, на яку він поступив — ключ specialty, 
+# та отримані ним бали з окремих дисциплін — ключі math (математика), lang ( українська мова) та eng (англійська мова)
+
+# Розробіть функцію save_applicant_data(source, output), яка буде вказаний список із параметра source зберігати у файл із параметра output
+
+# Структура файлу для зберігання повинна бути наступною. У кожному новому рядку файлу повинні бути записані через кому без прогалин
+# прізвище абітурієнта, код спеціальності, на яку він поступив, та отримані ним бали за окремими дисциплінами.
+
+# Kovalchuk Oleksiy,301,175,180,155
+# Ivanchuk Boryslav,101,135,150,165
+# Karpenko Dmitro,201,155,175,185
+# Вимоги:
+
+# відкрийте файл output для запису, використовуючи менеджер контексту with та режим w.
+# запис нового вмісту файлу output має бути або за допомогою методу writelines, або використовувати метод write
+
+
+
+# ++++++++++++++++++++ Код / Code ++++++++++++++++++++++++++++++++++++
+
+
+from pathlib import Path
+
+def save_applicant_data ( source, output ) : # Функція  Приймає два параметра , *source - це список словників і *output шлях до файлу в який будемо записувати результат роботи функції
+
+       with open (output , "w") as fh :      # Відкриваємо наш файл на який вкзує *output з параметром "w" - для запису у файл за допомогою менеджера контексту wiht ... as :
+        
+        for student in  source :    # Цикл в якому будемо проходитись по елементах списку *source які є словниками в нашому випадку ,
+                                    # і за допомогою вкладеного циклу  for  value in student.values() : збирати значення словника і записувати їх через кому  в окремий рядок .
+                                    # В кінці замість коми будемо ставити сивмол нового рядка *\n
+                                    # на кожній ітерації циклу в кінці сформований рядок будемо відразу записувати в файл а який вказує *output
+                                    # Після запису останього рядка файл закриється , Дані будуть збереженні в ньому. 
+            
+            count = 0               # Лічильник , використаємо що останій символ кому замінити на знак нового рядка *\n ,Оскільки в нас всі дані йдуть в форматі 5 значеь розділених між собою комою. 
+                                    # Інофрмація про кожного студента має починатись з нового рядка. Початкое значення лічильника рівне 0 буде встановлюватись для кожного значення *student . В середені вкладеного циклу змінюватись .
+            info_student =""        # зміній *info_student присвюєм початкове занчення пустоної стрічки буде встановлюватись для кожного значення *student . В середені  вкладеного  циклу змінюватись .
+                              
+            for  value in student.values() : # Вкладений цикл в якому будемо проходитись по значеннях з словника *student.vlues()-метод який повертає значення кожного ключа з словника який вказаний перед карпкою.
+                                             # Перші 4 значення записуємо через кому в стрічку *info_student через кому а після останього пятого ставимо знак нового рядка *\n
+                    if count < 4 :           # Умова для перших 4 значень . Перевіряємо по лічильнику.
+                        
+                        info_student += f"{value}," # записуємо в *info_student стрічку утворену методом f""-рядка . Де в лапках "" вказуємо змінні дані в фігурних дужках{} а незмінні просто записуємо.
+                                                    # В нашому випалку на першій ітерації циклу  *info_student буде містити Kovalchuk Oleksiy, на другій  Kovalchuk Oleksiy,301, на третій Kovalchuk Oleksiy,301,175, і так далі. 
+                        count += 1                    # збільшуємо наш лічильник на 1 .
+                    
+                    else:                           # Коли наш лічильник прийме значення 4 умова if не виконається і спрацює *else: ,Тоді це буде наш 5 елемент значення який в який потрібно заміть коми поставити знак переносту рядка.
+                          
+                        info_student += f"{value}\n" # Для 5 елементй значення з  словника *student в кінці добавляємо \n .
+            
+            fh.write ( info_student ) # записуємо  наш сформований рядок віразу в файл. На кожній ітераці циклу *for student in  source : . коли цикл завершиться файл закриється і збережеться за домпомгою методуконтексту with ...as :
+            
+            #print (inf_student)
+
+
+source = [{"name": "Kovalchuk Oleksiy","specialty": 301,"math": 175,"lang": 180,"eng": 155,},{"name": "Ivanchuk Boryslav","specialty": 101,"math": 135,"lang": 150,"eng": 165,},{"name": "Karpenko Dmitro","specialty": 201,"math": 155,"lang": 175,"eng": 185,}]  # Тестовий приклад
+
+output = Path ( "Output_studen_list_Zavdania_8.txt" )  # Шлях до тестового файлу для запису .
+
+save_applicant_data ( source, output )  # Виклки функції.
